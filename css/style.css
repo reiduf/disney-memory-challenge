@@ -34,3 +34,17 @@ hr {
     height: 15vmin;
     border-radius: 1.5vmin;
 }
+
+footer {
+    height: 10vmin;
+    margin-top: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer > button {
+    margin: 5vmin;
+    padding: 1vmin 2vmin;
+    border: none;
+}
