@@ -23,19 +23,22 @@ hr {
 }
 
 
-
+/* Table and card styling */
 #table {
     display: grid;
-    grid-template-columns: repeat(4, 15vmin);
+    grid-template-columns: repeat(6, 15vmin);
     gap: 3vmin;
 
 }
 
 #table > div {
-    background: green; 
+    background: linear-gradient(rgb(11,76,251), rgb(8,60,199));
     height: 15vmin;
     border-radius: 1.5vmin;
+    box-shadow: 0px 2px 8px 1px rgba(91, 91, 91, 0.65);
 }
+
+/* footer styling */
 
 footer {
     height: 10vmin;
