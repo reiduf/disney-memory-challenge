@@ -28,7 +28,7 @@ hr {
     display: grid;
     grid-template-columns: repeat(6, 15vmin);
     gap: 3vmin;
-
+    margin: 5vmin;
 }
 
 #table > div {
@@ -36,6 +36,13 @@ hr {
     height: 15vmin;
     border-radius: 1.5vmin;
     box-shadow: 0px 2px 8px 1px rgba(91, 91, 91, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mickey-head {
+    width: 75%;
 }
 
 /* footer styling */
