@@ -14,6 +14,9 @@ const characters = [
    {name: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg" } //11   
 ];
 
+const preShuffleChars = [];
+createPreShuffleArray();
+
 /*----- state variables -----*/
 let table; //array that stores the shuffled card order
 let winner; //true or false
@@ -29,3 +32,11 @@ let secondCardSel; //set by the player - second card chosen
 
 
 /*----- functions -----*/
+function createPreShuffleArray() {
+    characters.forEach(function(character) {
+        preShuffleChars.push(character.name); //card 1
+        preShuffleChars.push(character.name); //card 2
+        
+
+    });
+};
