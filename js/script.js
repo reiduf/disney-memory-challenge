@@ -18,14 +18,16 @@ const preShuffleChars = [];
 createPreShuffleArray();
 
 /*----- state variables -----*/
-let table; //array that stores the shuffled card order
+let table; //array that stores the shuffled tile order
 let winner; //true or false
 let numMatches; //need 12 matches to win the game
-let firstCardSel; //set by the player - first card chosen
-let secondCardSel; //set by the player - second card chosen
+let firstTileSel; //set by the player - first tile chosen
+let secondTileSel; //set by the player - second tile chosen
 
 
 /*----- cached elements  -----*/
+const tableEl = document.getElementById('table'); 
+const tileEl = document.querySelectorAll('#table > div');
 
 
 /*----- event listeners -----*/
@@ -36,7 +38,5 @@ function createPreShuffleArray() {
     characters.forEach(function(character) {
         preShuffleChars.push(character.name); //card 1
         preShuffleChars.push(character.name); //card 2
-        
-
     });
 };
