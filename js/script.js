@@ -1,17 +1,17 @@
 /*----- constants -----*/
 const characters = [
-   {name: "nemo", href: "" }, //0
-   {name: "simba", href: "" }, //1
-   {name: "mickey", href: "" }, //2
-   {name: "remy", href: "" }, //3
-   {name: "walle", href: "" }, //4
-   {name: "moana", href: "" }, //5
-   {name: "kevin", href: "" }, //6
-   {name: "mike", href: "" }, //7
-   {name: "sully", href: "" }, //8
-   {name: "woody", href: "" }, //9
-   {name: "buzz", href: "" }, //10
-   {name: "eve", href: "" } //11   
+   {name: "nemo", href: "https://i.imgur.com/TcP6KrR.jpg" }, //0
+   {name: "simba", href: "https://i.imgur.com/BhgBKQq.jpg" }, //1
+   {name: "mickey", href: "https://i.imgur.com/Z9WCIBt.jpg" }, //2
+   {name: "remy", href: "https://i.imgur.com/7yDqzJR.jpg" }, //3
+   {name: "walle", href: "https://i.imgur.com/lltMlBn.jpg" }, //4
+   {name: "moana", href: "https://i.imgur.com/wunlajh.jpg" }, //5
+   {name: "kevin", href: "https://i.imgur.com/zE3683g.jpg" }, //6
+   {name: "mike", href: "https://i.imgur.com/qzHVMDN.jpg" }, //7
+   {name: "sully", href: "https://i.imgur.com/bHQEtPX.jpg" }, //8
+   {name: "woody", href: "https://i.imgur.com/3jYJhCy.jpg" }, //9
+   {name: "buzz", href: "https://i.imgur.com/jCXG4AV.jpg" }, //10
+   {name: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg" } //11   
 ];
 
 /*----- state variables -----*/
