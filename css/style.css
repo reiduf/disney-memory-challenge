@@ -10,16 +10,29 @@ body {
     justify-content: space-between;
     font-family: 'Kanit', sans-serif;
     margin: 0;
+    background: radial-gradient(rgb(27, 88, 254), rgb(0, 26, 98));
+}
+
+/* Header Styling */
+header {
+    width: 100vw;
+    height: 8vh;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid rgba(64, 253, 255, 0.5);
+}
+
+#logo {
+    width: 5%;
+    margin-top: 3px;
+    margin-right: 11px;
 }
 
 h1 {
-    margin-top: 25px;
-    font-size: 40px;
-}
-
-hr {
-    width: 60vw;
-    margin-top: -35px;
+    font-size: 35px;
+    color: white;
 }
 
 
@@ -28,11 +41,14 @@ hr {
     display: grid;
     grid-template-columns: repeat(6, 15vmin);
     gap: 3vmin;
-    margin: 5vmin;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 30px;
+    border-radius: 1.5vmin;
+    margin-bottom: 5px;
 }
 
 #table > div {
-    background: linear-gradient(rgb(11,76,251), rgb(8,60,199));
+    background: linear-gradient(rgb(26, 87, 254), rgb(3, 39, 138));
     height: 15vmin;
     border-radius: 1.5vmin;
     box-shadow: 0px 2px 8px 1px rgba(91, 91, 91, 0.65);
@@ -73,4 +89,11 @@ footer > button {
     font-family: 'Kanit', sans-serif;
     font-size: 20px;
     border-radius: 45px;
+    border: 4px solid rgba(255, 255, 255, 0);
+}
+
+button:hover {
+    border: 4px solid rgb(64, 253, 255);
+    background-color: white;
+    transform: scale(1.1);
 }
