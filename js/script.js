@@ -60,6 +60,6 @@ function renderTable() {
         const tileElID = tile.getAttribute("id");
         const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`);
         
-        console.log(charName);
+        tile.style.backgroundImage = `url("${charName.href}")`;
     });
 };
