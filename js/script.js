@@ -26,8 +26,8 @@ let secondTileSel; //set by the player - second tile chosen
 
 
 /*----- cached elements  -----*/
-const tableEl = document.getElementById('table'); 
-const tileEl = document.querySelectorAll('#table > div');
+const tableEl = document.getElementById("table"); 
+const tileEls = document.querySelectorAll("#table > div");
 
 
 /*----- event listeners -----*/
@@ -36,7 +36,30 @@ const tileEl = document.querySelectorAll('#table > div');
 /*----- functions -----*/
 function createPreShuffleArray() {
     characters.forEach(function(character) {
-        preShuffleChars.push(character.name); //card 1
-        preShuffleChars.push(character.name); //card 2
+        preShuffleChars.push(character.name); //tile 1
+        preShuffleChars.push(character.name); //tile 2
+    });
+};
+
+initialize();
+
+function initialize() {
+    //shuffle the preShuffleChars array
+    render();
+}
+
+function render() {
+    renderTable();
+    // renderMessage();
+}
+
+function renderTable() {
+    //link character img html href to the innerhtml of each tileEl
+    tileEls.forEach(function(tile){
+        //find the object with that name, input its href value
+        const tileElID = tile.getAttribute("id");
+        const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`);
+        
+        console.log(charName);
     });
 };
