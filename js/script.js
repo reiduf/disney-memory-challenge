@@ -54,27 +54,32 @@ function render() {
 
 function handleClick(evt) {
     const tileElID = evt.target.getAttribute("id");
-    const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`)
+    const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`) //update to shuffled deck later
 
     //GUARD: if its not a div, exit
     if(evt.target.tagName !== "DIV") {
         return;
     };
 
-    //first, update the first tile selection to the name of the character whose card was clicked
-    firstTileSel = charName.name;
-    console.log(firstTileSel);
+    //update the first tile selection to the name of the character whose card was clicked
+    firstTileSel = charName.name; //update to shuffled deck later
+    console.log(`first tile selection: ${firstTileSel}`);
+    console.log(evt.target.classList);
         
-    //then, set that tile to active and turn off the breathing hover behavior
-    evt.target.classList.remove("inactive", "breathe");
+    //turn off the default/breathing styling of the clicked tile
+    evt.target.classList.remove("default", "breathe");
+    evt.target.classList.add("clicked");
+    console.log(evt.target.classList);
     
     //render the background of that tile that was clicked
     evt.target.style.backgroundImage = `url("${charName.href}")`
    
-    //GUARD: if the card clicked has a class of "active" return
-    // if(!evt.target.classList.contains("inactive")) {
-    //     console.log("card is already clicked");
-    // }
+    //GUARD: if the clicked tile doesnt have a class of default, return
+    if(evt.target.classList.contains("clicked")) {
+        return;
+    } 
 
     //update the second tile selection
+    secondTileSel = charName.name;
+    console.log(`second selection = ${secondTileSel}`)
 };
