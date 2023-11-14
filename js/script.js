@@ -58,19 +58,18 @@ function handleClick(evt) {
     };
 
     //update the first tile selection to the name of the character whose card was clicked
-    //remove "inactive" class from clicked tile
-    evt.target.classList.remove("inactive");
+    
+    evt.target.classList.remove("inactive", "breathe");
     renderClickedTile(evt);
-    //turn off the mickey head
+   
     //GUARD: if the card clicked has a class of "active" return
 
     //update the second tile selection
-    console.log(evt.target);
 };
 
-    function renderClickedTile(evt) {
-        const tileElID = evt.target.getAttribute("id");
-        const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`); //update this to the shuffled table array later
+function renderClickedTile(evt) {
+    const tileElID = evt.target.getAttribute("id");
+    const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`); //update this to the shuffled table array later
         
-        evt.target.style.backgroundImage = `url("${charName.href}")`;
-    };
+    evt.target.style.backgroundImage = `url("${charName.href}")`;
+};
