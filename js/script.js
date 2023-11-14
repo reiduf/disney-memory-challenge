@@ -46,31 +46,31 @@ initialize();
 
 function initialize() {
     //shuffle the preShuffleChars array
-    render();
 }
 
 function render() {
-    renderTable();
     // renderMessage();
 }
 
-function renderTable() {
-    // tileEls.forEach(function(tile){
-    //     const tileElID = tile.getAttribute("id");
-    //     const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`); //update this to the shuffled table array later
-        
-    //     tile.style.backgroundImage = `url("${charName.href}")`;
-    // });
-};
-
 function handleClick(evt) {
-    //GUARD: if its not a div, return outta here
+    if(evt.target.tagName !== "DIV") {
+        return;
+    };
+
     //update the first tile selection to the name of the character whose card was clicked
-    //set that first card element to "active" 
+    //remove "inactive" class from clicked tile
+    evt.target.classList.remove("inactive");
+    renderClickedTile(evt);
     //turn off the mickey head
     //GUARD: if the card clicked has a class of "active" return
 
     //update the second tile selection
-    evt.target.classList.remove("inactive");
     console.log(evt.target);
 };
+
+    function renderClickedTile(evt) {
+        const tileElID = evt.target.getAttribute("id");
+        const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`); //update this to the shuffled table array later
+        
+        evt.target.style.backgroundImage = `url("${charName.href}")`;
+    };
