@@ -51,7 +51,7 @@ h1 {
 }
 
 
-/* Table and card styling */
+/* Table and tileValue styling */
 #table {
     display: grid;
     grid-template-columns: repeat(6, 15vmin);
