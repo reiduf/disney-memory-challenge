@@ -1,29 +1,29 @@
 /*----- constants -----*/
 const characters = [
-   {name: "nemo1", tileValue: "nemo", href: "https://i.imgur.com/TcP6KrR.jpg", clicked: false}, //0
-   {name: "nemo2", tileValue: "nemo", href: "https://i.imgur.com/TcP6KrR.jpg", clicked: false}, //1
-   {name: "simba1", tileValue: "simba", href: "https://i.imgur.com/BhgBKQq.jpg", clicked: false}, //2
-   {name: "simba2", tileValue: "simba", href: "https://i.imgur.com/BhgBKQq.jpg", clicked: false}, //3
-   {name: "mickey1", tileValue: "mickey", href: "https://i.imgur.com/Z9WCIBt.jpg", clicked: false}, //4
-   {name: "mickey2", tileValue: "mickey", href: "https://i.imgur.com/Z9WCIBt.jpg", clicked: false}, //5
-   {name: "remy1", tileValue: "remy", href: "https://i.imgur.com/7yDqzJR.jpg", clicked: false}, //6
-   {name: "remy2", tileValue: "remy", href: "https://i.imgur.com/7yDqzJR.jpg", clicked: false}, //7
-   {name: "walle1", tileValue: "walle", href: "https://i.imgur.com/lltMlBn.jpg", clicked: false}, //8
-   {name: "walle2", tileValue: "walle", href: "https://i.imgur.com/lltMlBn.jpg", clicked: false}, //9
-   {name: "moana1", tileValue: "moana", href: "https://i.imgur.com/wunlajh.jpg", clicked: false}, //10
-   {name: "moana2", tileValue: "moana", href: "https://i.imgur.com/wunlajh.jpg", clicked: false}, //11
-   {name: "kevin1", tileValue: "kevin", href: "https://i.imgur.com/zE3683g.jpg", clicked: false}, //12
-   {name: "kevin2", tileValue: "kevin", href: "https://i.imgur.com/zE3683g.jpg", clicked: false}, //13
-   {name: "mike1", tileValue: "mike", href: "https://i.imgur.com/qzHVMDN.jpg", clicked: false}, //14
-   {name: "mike2", tileValue: "mike", href: "https://i.imgur.com/qzHVMDN.jpg", clicked: false}, //15
-   {name: "sully1", tileValue: "sully", href: "https://i.imgur.com/bHQEtPX.jpg", clicked: false}, //16
-   {name: "sully2", tileValue: "sully", href: "https://i.imgur.com/bHQEtPX.jpg", clicked: false}, //17
-   {name: "woody1", tileValue: "woody", href: "https://i.imgur.com/3jYJhCy.jpg", clicked: false}, //18
-   {name: "woody2", tileValue: "woody", href: "https://i.imgur.com/3jYJhCy.jpg", clicked: false}, //19
-   {name: "buzz1", tileValue: "buzz", href: "https://i.imgur.com/jCXG4AV.jpg", clicked: false}, //20
-   {name: "buzz2", tileValue: "buzz", href: "https://i.imgur.com/jCXG4AV.jpg", clicked: false}, //21
-   {name: "eve1", tileValue: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg", clicked: false}, //22 
-   {name: "eve2", tileValue: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg", clicked: false} //23   
+   {tileValue: "nemo1", name: "nemo", href: "https://i.imgur.com/TcP6KrR.jpg", clicked: false}, //0
+   {tileValue: "nemo2", name: "nemo", href: "https://i.imgur.com/TcP6KrR.jpg", clicked: false}, //1
+   {tileValue: "simba1", namee: "simba", href: "https://i.imgur.com/BhgBKQq.jpg", clicked: false}, //2
+   {tileValue: "simba2", namee: "simba", href: "https://i.imgur.com/BhgBKQq.jpg", clicked: false}, //3
+   {tileValue: "mickey1", name: "mickey", href: "https://i.imgur.com/Z9WCIBt.jpg", clicked: false}, //4
+   {tileValue: "mickey2", name: "mickey", href: "https://i.imgur.com/Z9WCIBt.jpg", clicked: false}, //5
+   {tileValue: "remy1", name: "remy", href: "https://i.imgur.com/7yDqzJR.jpg", clicked: false}, //6
+   {tileValue: "remy2", name: "remy", href: "https://i.imgur.com/7yDqzJR.jpg", clicked: false}, //7
+   {tileValue: "walle1", name: "walle", href: "https://i.imgur.com/lltMlBn.jpg", clicked: false}, //8
+   {tileValue: "walle2", name: "walle", href: "https://i.imgur.com/lltMlBn.jpg", clicked: false}, //9
+   {tileValue: "moana1", name: "moana", href: "https://i.imgur.com/wunlajh.jpg", clicked: false}, //10
+   {tileValue: "moana2", name: "moana", href: "https://i.imgur.com/wunlajh.jpg", clicked: false}, //11
+   {tileValue: "kevin1", name: "kevin", href: "https://i.imgur.com/zE3683g.jpg", clicked: false}, //12
+   {tileValue: "kevin2", name: "kevin", href: "https://i.imgur.com/zE3683g.jpg", clicked: false}, //13
+   {tileValue: "mike1", name: "mike", href: "https://i.imgur.com/qzHVMDN.jpg", clicked: false}, //14
+   {tileValue: "mike2", name: "mike", href: "https://i.imgur.com/qzHVMDN.jpg", clicked: false}, //15
+   {tileValue: "sully1", name: "sully", href: "https://i.imgur.com/bHQEtPX.jpg", clicked: false}, //16
+   {tileValue: "sully2", name: "sully", href: "https://i.imgur.com/bHQEtPX.jpg", clicked: false}, //17
+   {tileValue: "woody1", name: "woody", href: "https://i.imgur.com/3jYJhCy.jpg", clicked: false}, //18
+   {tileValue: "woody2", name: "woody", href: "https://i.imgur.com/3jYJhCy.jpg", clicked: false}, //19
+   {tileValue: "buzz1", name: "buzz", href: "https://i.imgur.com/jCXG4AV.jpg", clicked: false}, //20
+   {tileValue: "buzz2", name: "buzz", href: "https://i.imgur.com/jCXG4AV.jpg", clicked: false}, //21
+   {tileValue: "eve1", name: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg", clicked: false}, //22 
+   {tileValue: "eve2", name: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg", clicked: false} //23   
 ];
 
 const preShuffleChars = [];
