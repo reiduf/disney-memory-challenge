@@ -15,14 +15,14 @@ const characters = [
  ]
 
  const preShuffleChars = [];
- createPreShuffleArray();
 
 /*----- state variables -----*/
 let shuffledChars; //array that stores the shuffled tile order
 let winner; //true or false
 let numMatches; //need 12 matches to win the game
-let firstTileSel = ""; //set by the player - first tile chosen
-let secondTileSel = ""; //set by the player - second tile chosen
+let firstTileSel; //set by the player - first tile chosen
+let secondTileSel; //set by the player - second tile chosen
+let turn //1 or -1
 
 
 /*----- cached elements  -----*/
@@ -35,27 +35,32 @@ tableEl.addEventListener("click", handleClick);
 
 
 /*----- functions -----*/
+initialize();
+
+function initialize() {
+    //shuffle the preShuffleChars array
+    numMatches = 0;
+    turn = 1;
+    createPreShuffleArray();
+}
+
 function createPreShuffleArray() {
     characters.forEach(function(character) {
       const charObj = {};
       charObj.tileValue = `${character.name}1`; //eg "simba1"
       charObj.name = character.name;
       charObj.active = false;
+      charObj.turn = 0;
       preShuffleChars.push(charObj);
 
       const charObj2 = {};
       charObj2.tileValue = `${character.name}2`; //eg "simba2"
       charObj2.name = character.name;
       charObj2.active = false;
+      charObj.turn = 0;
       preShuffleChars.push(charObj2);
     });
 };
-
-initialize();
-
-function initialize() {
-    //shuffle the preShuffleChars array
-}
 
 function render() {
     renderTiles();
@@ -81,9 +86,10 @@ function handleClick(evt) {
     render();
 
     //update the first tile selection to the name of the character whose card was active
-    firstTileSel = activeCharObj.tileValue; //update to shuffled deck later
-    console.log(`first tile selection: ${firstTileSel}`);   
-    
+    activeCharObj.turn = turn;
+
+    turn *= -1;
+    console.log(activeCharObj);
 };
 
 
