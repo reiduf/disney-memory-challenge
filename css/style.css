@@ -24,6 +24,10 @@ body {
     100% {transform: scale(1);}
 }
 
+.inactive {
+    background: url("https://i.imgur.com/u4MdICK.jpg");
+}
+
 /* Header Styling */
 header {
     width: 100vw;
@@ -59,7 +63,6 @@ h1 {
 }
 
 #table > div {
-    background: linear-gradient(rgb(26, 87, 254), rgb(3, 39, 138));
     height: 15vmin;
     border-radius: 1.5vmin;
     box-shadow: 0px 2px 8px 1px rgba(91, 91, 91, 0.65);
@@ -67,10 +70,6 @@ h1 {
     justify-content: center;
     align-items: center;
     background-size: cover;
-}
-
-.mickey-head {
-    width: 75%;
 }
 
 /* footer styling */

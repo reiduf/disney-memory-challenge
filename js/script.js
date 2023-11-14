@@ -31,6 +31,7 @@ const tileEls = document.querySelectorAll("#table > div");
 
 
 /*----- event listeners -----*/
+tableEl.addEventListener("click", handleClick);
 
 
 /*----- functions -----*/
@@ -54,12 +55,22 @@ function render() {
 }
 
 function renderTable() {
-    //link character img html href to the innerhtml of each tileEl
-    tileEls.forEach(function(tile){
-        //find the object with that name, input its href value
-        const tileElID = tile.getAttribute("id");
-        const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`);
+    // tileEls.forEach(function(tile){
+    //     const tileElID = tile.getAttribute("id");
+    //     const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`); //update this to the shuffled table array later
         
-        tile.style.backgroundImage = `url("${charName.href}")`;
-    });
+    //     tile.style.backgroundImage = `url("${charName.href}")`;
+    // });
+};
+
+function handleClick(evt) {
+    //GUARD: if its not a div, return outta here
+    //update the first tile selection to the name of the character whose card was clicked
+    //set that first card element to "active" 
+    //turn off the mickey head
+    //GUARD: if the card clicked has a class of "active" return
+
+    //update the second tile selection
+    evt.target.classList.remove("inactive");
+    console.log(evt.target);
 };
