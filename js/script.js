@@ -53,23 +53,28 @@ function render() {
 }
 
 function handleClick(evt) {
+    const tileElID = evt.target.getAttribute("id");
+    const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`)
+
+    //GUARD: if its not a div, exit
     if(evt.target.tagName !== "DIV") {
         return;
     };
 
-    //update the first tile selection to the name of the character whose card was clicked
-    
+    //first, update the first tile selection to the name of the character whose card was clicked
+    firstTileSel = charName.name;
+    console.log(firstTileSel);
+        
+    //then, set that tile to active and turn off the breathing hover behavior
     evt.target.classList.remove("inactive", "breathe");
-    renderClickedTile(evt);
+    
+    //render the background of that tile that was clicked
+    evt.target.style.backgroundImage = `url("${charName.href}")`
    
     //GUARD: if the card clicked has a class of "active" return
+    // if(!evt.target.classList.contains("inactive")) {
+    //     console.log("card is already clicked");
+    // }
 
     //update the second tile selection
-};
-
-function renderClickedTile(evt) {
-    const tileElID = evt.target.getAttribute("id");
-    const charName = characters.find(char => char.name === `${preShuffleChars[tileElID]}`); //update this to the shuffled table array later
-        
-    evt.target.style.backgroundImage = `url("${charName.href}")`;
 };
