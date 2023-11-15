@@ -85,7 +85,7 @@ main {
     margin: 0 50px;
     border-radius: 1.5vmin;
     width: 30vmin;
-    height: 50vmin;
+    height: 35vmin;
     border: 3px solid rgb(64, 253, 255);
     padding: 10px 15px;
     position: absolute;
@@ -99,10 +99,28 @@ main {
     text-align: center;
 }
 
-.scoreboard > span {
-    /* margin: 15px; */
+hr {
+    width: 85%;
+    border-bottom: 2px solid rgb(64, 253, 255);
+}
+
+ p {
     font-size: 20px;
     color: white;
+    text-align: center;
+    margin-top: 16px;
+ }
+
+ #match-counter {
+    color: rgb(64, 253, 255);
+    font-size: 40px;
+    margin-right: 3px;
+}
+
+#message {
+    color: rgb(64, 253, 255);
+    font-size: 30px;
+    text-align: center;
 }
 
 /* footer styling
