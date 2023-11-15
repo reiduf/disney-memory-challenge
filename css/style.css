@@ -108,15 +108,16 @@ main {
 
 #char-thumbnails {
     display: grid;
-    grid-template-columns: repeat(4, 5.5vmin);
+    grid-template-columns: repeat(4, 5.75vmin);
     gap: 1vmin;
     margin-top: 20px;
 }
 
 #char-thumbnails > div {
-    height: 5.5vmin;
+    height: 5.75vmin;
     background: white;
     border-radius: 1.2vmin;
+    background-size: cover;
 }
 
 #scoreboard > h2 {

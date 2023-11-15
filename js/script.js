@@ -114,6 +114,7 @@ function nextGuess() {
 function render() {
     renderTiles();
     renderMessage();
+    renderFindMeGrid();
 }
 
 //go through the characters, if "active" is true, then render the card
@@ -147,7 +148,15 @@ function renderMessage() {
     }
 };
 
+function renderFindMeGrid() {
+    const findMeCellEls = document.querySelectorAll("#char-thumbnails > div");
 
+    findMeCellEls.forEach(function(cell, idx) {
+        cell.style.backgroundImage = `url("${characters[idx].href}")`
+    })
+}
+
+// preShuffleChars.forEach(function(char){})
 
     
 
