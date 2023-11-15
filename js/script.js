@@ -114,19 +114,19 @@ function renderTiles() {
     preShuffleChars.forEach(function(char, idx){
         const tileEl = document.getElementById(idx);
     
-        if (char.turn) {
+        if (char.turn) { //if theres a turn
             tileEl.classList.remove("default", "breathe");
             tileEl.style.backgroundImage = `url("${characters.find(character => character.name === char.name).href}")`;
-        } else if (char.match) {
+        } else if (char.match) { //if theres a match
             setTimeout(function() {
                 tileEl.style.visibility = "hidden";
             }, 800);
-        } else if (!char.match) {
+        } else if (!char.match) { //not a match
             setTimeout(function(){
                 tileEl.style.backgroundImage = null;
                 tileEl.classList.add("default", "breathe");
             }, 1500)
-        };
+        } 
     });
 }
 

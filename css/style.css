@@ -4,10 +4,10 @@
 
 body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
     font-family: 'Kanit', sans-serif;
     margin: 0;
     background: radial-gradient(rgb(27, 88, 254), rgb(0, 26, 98));
@@ -36,7 +36,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid rgba(64, 253, 255, 0.75);
+    border-bottom: 3px solid rgb(64, 253, 255);
 }
 
 #logo {
@@ -60,6 +60,7 @@ h1 {
     padding: 30px;
     border-radius: 1.5vmin;
     margin-bottom: 5px;
+    border: 3px solid rgb(64, 253, 255);
 }
 
 #table > div {
@@ -72,7 +73,39 @@ h1 {
     background-size: cover;
 }
 
-/* footer styling */
+/* Main / Message areas styling */
+main {
+    display: flex;
+    justify-content: center;
+    margin: 70px auto;
+}
+
+.scoreboard {
+    background: rgba(255, 255, 255, 0.5);
+    margin: 0 50px;
+    border-radius: 1.5vmin;
+    width: 30vmin;
+    height: 50vmin;
+    border: 3px solid rgb(64, 253, 255);
+    padding: 10px 15px;
+    position: absolute;
+    right: 40px;
+}
+
+.scoreboard > h2 {
+    color: rgb(0, 26, 98);
+    font-size: 30px;
+    margin: 6px;
+    text-align: center;
+}
+
+.scoreboard > span {
+    /* margin: 15px; */
+    font-size: 20px;
+    color: white;
+}
+
+/* footer styling
 footer {
     height: 10vmin;
     margin-top: -20px;
@@ -96,4 +129,4 @@ button:hover {
     border: 3px solid rgb(64, 253, 255);
     background-color: white;
     transform: scale(1.1);
-}
+} */
