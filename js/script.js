@@ -59,11 +59,6 @@ function createPreShuffleArray() {
     });
 };
 
-function render() {
-    renderTiles();
-    // renderMessage();
-}
-
 function handleClick(evt) {
     const clickedTileElID = evt.target.getAttribute("id");
     const activeCharObj = preShuffleChars[clickedTileElID]; //update to shuffled deck later
@@ -109,6 +104,11 @@ function nextGuess() {
     preShuffleChars.forEach(char => char.turn = 0);
 };
 
+function render() {
+    renderTiles();
+    // renderMessage();
+}
+
 //go through the characters, if "active" is true, then render the card
 function renderTiles() {
     preShuffleChars.forEach(function(char, idx){
@@ -122,8 +122,11 @@ function renderTiles() {
                 tileEl.style.visibility = "hidden";
             }, 800);
         } else if (!char.match) {
-            tileEl.classList.add("default", "breathe");
-        }
+            setTimeout(function(){
+                tileEl.style.backgroundImage = null;
+                tileEl.classList.add("default", "breathe");
+            }, 1500)
+        };
     });
 }
 

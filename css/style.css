@@ -25,7 +25,7 @@ body {
 }
 
 .default {
-    background: url("https://i.imgur.com/u4MdICK.jpg");
+    background-image: url("https://i.imgur.com/u4MdICK.jpg");
 }
 
 /* Header Styling */
