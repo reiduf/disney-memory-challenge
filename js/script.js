@@ -89,7 +89,7 @@ function handleClick(evt) {
         setTimeout(function(){
             checkForMatch();
             render();
-        }, 800)
+        }, 900)
     }
 };
 
@@ -136,11 +136,14 @@ function renderTiles() {
 function renderMessage() {
     document.getElementById("match-counter").innerText = numMatches;
     const msg = document.getElementById("message");
+    const winnerMsg = document.getElementById("winner-message");
 
     if(turn === 1) {
         msg.innerText = "Select first tile"
     } else if(turn === -1) {
         msg.innerText = "Select second tile";
+    } else if (numMatches === 12) {
+        winnerMsg.classList.remove("display-none");
     }
 };
 
