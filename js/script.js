@@ -74,7 +74,7 @@ function handleClick(evt) {
     };
 
     //GUARD: if the tile is already active or has been matched, exit (prevent clicking same tile)
-    if (activeCharObj.turn) {
+    if (activeCharObj.turn || activeCharObj.match) {
         return;
     }
 
@@ -87,6 +87,7 @@ function handleClick(evt) {
     //check the state array, if there are any with a -1 value, then check for a match
     if (preShuffleChars.some(char => char.turn === -1)) {
         checkForMatch();
+        render();
     };
 };
 
@@ -96,14 +97,12 @@ function checkForMatch() {
 
     //compare if the name property of those two match
     if (firstTurn.name === secondTurn.name) {
-        matchStatus = true;
         numMatches += 1;
         firstTurn.match = true;
         secondTurn.match = true;
-        nextGuess();
     } 
-    console.log(firstTurn);
-    console.log(secondTurn);
+
+    nextGuess();
 };
 
 function nextGuess() {
@@ -115,13 +114,18 @@ function renderTiles() {
     preShuffleChars.forEach(function(char, idx){
         const tileEl = document.getElementById(idx);
     
-        if(char.turn) {
+        if (char.turn) {
             tileEl.classList.remove("default", "breathe");
             tileEl.style.backgroundImage = `url("${characters.find(character => character.name === char.name).href}")`;
+        } else if (char.match) {
+            setTimeout(function() {
+                tileEl.style.visibility = "hidden";
+            }, 800);
+        } else if (!char.match) {
+            tileEl.classList.add("default", "breathe");
         }
     });
-};
-
+}
 
 
 
