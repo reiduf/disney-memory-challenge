@@ -22,7 +22,7 @@ let winner; //true or false
 let numMatches; //need 12 matches to win the game
 let firstTileSel; //set by the player - first tile chosen
 let secondTileSel; //set by the player - second tile chosen
-let turn //1 or -1
+let turn //1 or -1 (1 is first selection, -1 is second selection)
 
 
 /*----- cached elements  -----*/
@@ -49,14 +49,12 @@ function createPreShuffleArray() {
       const charObj = {};
       charObj.tileValue = `${character.name}1`; //eg "simba1"
       charObj.name = character.name;
-      charObj.active = false;
       charObj.turn = 0;
       preShuffleChars.push(charObj);
 
       const charObj2 = {};
       charObj2.tileValue = `${character.name}2`; //eg "simba2"
       charObj2.name = character.name;
-      charObj2.active = false;
       charObj.turn = 0;
       preShuffleChars.push(charObj2);
     });
@@ -77,19 +75,15 @@ function handleClick(evt) {
     };
 
     //GUARD: if the tile is already active, exit (prevent clicking same tile)
-    if (activeCharObj.active) {
+    if (activeCharObj.turn) {
         return;
     }
 
-    //change the "active" property to true and render
-    activeCharObj.active = true;
-    render();
-
-    //update the first tile selection to the name of the character whose card was active
+    //update the turn property to 1 or -1
     activeCharObj.turn = turn;
+    render();    
 
     turn *= -1;
-    console.log(activeCharObj);
 };
 
 
@@ -98,7 +92,7 @@ function renderTiles() {
     preShuffleChars.forEach(function(char, idx){
         const tileEl = document.getElementById(idx);
     
-        if(char.active) {
+        if(char.turn) {
             tileEl.classList.remove("default", "breathe");
             tileEl.style.backgroundImage = `url("${characters.find(character => character.name === char.name).href}")`;
         }
