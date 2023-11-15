@@ -41,6 +41,7 @@ function initialize() {
     numMatches = 0;
     turn = 1;
     createPreShuffleArray();
+    render();
 }
 
 function createPreShuffleArray() {
@@ -62,28 +63,34 @@ function createPreShuffleArray() {
 function handleClick(evt) {
     const clickedTileElID = evt.target.getAttribute("id");
     const activeCharObj = preShuffleChars[clickedTileElID]; //update to shuffled deck later
-
-    //GUARD: if its not a div, exit
-    if(evt.target.tagName !== "DIV") {
-        return;
-    };
-
-    //GUARD: if the tile is already active or has been matched, exit (prevent clicking same tile)
-    if (activeCharObj.turn || activeCharObj.match) {
+    
+    //GUARD - only click the tiles
+    if (evt.target.tagName !== "DIV") {
         return;
     }
 
-    //update the turn property to 1 or -1
-    activeCharObj.turn = turn;
-    render();    
+    //GUARD - dont click the same tile
+    if (activeCharObj.turn) {
+        return;
+    }
 
-    turn *= -1;
-
-    //check the state array, if there are any with a -1 value, then check for a match
+    //GUARD - once second selection made, stop
     if (preShuffleChars.some(char => char.turn === -1)) {
-        checkForMatch();
-        render();
-    };
+        return;
+    }
+
+    //assing the turn number to the state array, change the turn, then render
+    activeCharObj.turn = turn;  
+    turn *= -1;
+    render();
+
+    //check the state array, if the second selection was assigned, then check for a match
+    if (preShuffleChars.some(char => char.turn === -1)) {
+        setTimeout(function(){
+            checkForMatch();
+            render();
+        }, 800)
+    }
 };
 
 function checkForMatch() {
@@ -106,7 +113,7 @@ function nextGuess() {
 
 function render() {
     renderTiles();
-    // renderMessage();
+    renderMessage();
 }
 
 //go through the characters, if "active" is true, then render the card
@@ -118,18 +125,24 @@ function renderTiles() {
             tileEl.classList.remove("default", "breathe");
             tileEl.style.backgroundImage = `url("${characters.find(character => character.name === char.name).href}")`;
         } else if (char.match) { //if theres a match
-            setTimeout(function() {
-                tileEl.style.visibility = "hidden";
-            }, 800);
-        } else if (!char.match) { //not a match
-            setTimeout(function(){
-                tileEl.style.backgroundImage = null;
-                tileEl.classList.add("default", "breathe");
-            }, 1500)
+            tileEl.style.visibility = "hidden";
+        } else if (!char.match) { //theres a turn and not a match
+            tileEl.style.backgroundImage = null;
+            tileEl.classList.add("default", "breathe");
         } 
     });
 }
 
+function renderMessage() {
+    document.getElementById("match-counter").innerText = numMatches;
+    const msg = document.getElementById("message");
+
+    if(turn === 1) {
+        msg.innerText = "Select first tile"
+    } else if(turn === -1) {
+        msg.innerText = "Select second tile";
+    }
+};
 
 
 
