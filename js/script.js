@@ -20,8 +20,7 @@ const characters = [
 let shuffledChars; //array that stores the shuffled tile order
 let winner; //true or false
 let numMatches; //need 12 matches to win the game
-let firstTileSel; //set by the player - first tile chosen
-let secondTileSel; //set by the player - second tile chosen
+let matchStatus //true or false
 let turn //1 or -1 (1 is first selection, -1 is second selection)
 
 
@@ -74,7 +73,7 @@ function handleClick(evt) {
         return;
     };
 
-    //GUARD: if the tile is already active, exit (prevent clicking same tile)
+    //GUARD: if the tile is already active or has been matched, exit (prevent clicking same tile)
     if (activeCharObj.turn) {
         return;
     }
@@ -84,8 +83,32 @@ function handleClick(evt) {
     render();    
 
     turn *= -1;
+
+    //check the state array, if there are any with a -1 value, then check for a match
+    if (preShuffleChars.some(char => char.turn === -1)) {
+        checkForMatch();
+    };
 };
 
+function checkForMatch() {
+    const firstTurn = preShuffleChars.find(char => char.turn === 1);
+    const secondTurn = preShuffleChars.find(char => char.turn === -1);
+
+    //compare if the name property of those two match
+    if (firstTurn.name === secondTurn.name) {
+        matchStatus = true;
+        numMatches += 1;
+        firstTurn.match = true;
+        secondTurn.match = true;
+        nextGuess();
+    } 
+    console.log(firstTurn);
+    console.log(secondTurn);
+};
+
+function nextGuess() {
+    preShuffleChars.forEach(char => char.turn = 0);
+};
 
 //go through the characters, if "active" is true, then render the card
 function renderTiles() {
