@@ -32,6 +32,10 @@ body {
     display: none;
 }
 
+.button-hover-style:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
 /* Header Styling */
 header {
     width: 100vw;
@@ -123,6 +127,21 @@ main {
 #scoreboard > h2 {
     margin-top: 35px;
     margin-bottom: 15px;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    width: 30vmin;
+    padding: 10px;
+    font-family: inherit;
+    border: none;
+    border-radius: 1.2vmin;
+    font-size: 25px;
+    border: 3px solid rgb(64, 253, 255);
+    background: rgba(255, 255, 255, 0.5);
+    color: rgb(0, 26, 98);
+    font-weight: bold;
 }
 
 h2 {

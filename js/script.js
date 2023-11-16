@@ -31,7 +31,9 @@ const tileEls = document.querySelectorAll("#table > div");
 
 /*----- event listeners -----*/
 tableEl.addEventListener("click", handleClick);
-
+document.querySelector("button").addEventListener("click", function() {
+    console.log("clicked")
+})
 
 /*----- functions -----*/
 initialize();
