@@ -31,7 +31,7 @@ const tileEls = document.querySelectorAll("#table > div");
 
 /*----- event listeners -----*/
 tableEl.addEventListener("click", handleClick);
-document.querySelector("button").addEventListener("click", initialize)
+document.querySelector(".restart").addEventListener("click", initialize)
 
 /*----- functions -----*/
 initialize();
@@ -162,7 +162,6 @@ function renderFindMeGrid() {
 
     preShuffleChars.forEach(function(char){
         const matchCell = findMeCellEls.find(cell => cell.id === char.name);
-        
         matchCell.style.opacity = char.match ? "0.15" : "1";
     });
 }
