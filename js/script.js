@@ -149,14 +149,22 @@ function renderMessage() {
 };
 
 function renderFindMeGrid() {
-    const findMeCellEls = document.querySelectorAll("#char-thumbnails > div");
+    const findMeCellEls = [...document.querySelectorAll("#char-thumbnails > div")];
 
     findMeCellEls.forEach(function(cell, idx) {
         cell.style.backgroundImage = `url("${characters[idx].href}")`
-    })
+    });
+
+    preShuffleChars.forEach(function(char){
+        if(char.match) {
+            const matchCell = findMeCellEls.find(cell => cell.id === char.name);
+            console.log(matchCell);
+            matchCell.style.opacity = "0.15";
+        }
+    });
 }
 
-// preShuffleChars.forEach(function(char){})
+
 
     
 
