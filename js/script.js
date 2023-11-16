@@ -14,7 +14,7 @@ const characters = [
     {name: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg"}, //11
  ]
 
- const preShuffleChars = [];
+
 
 /*----- state variables -----*/
 let shuffledChars; //array that stores the shuffled tile order
@@ -22,7 +22,7 @@ let winner; //true or false
 let numMatches; //need 12 matches to win the game
 let matchStatus //true or false
 let turn //1 or -1 (1 is first selection, -1 is second selection)
-
+let preShuffleChars; //state arrray
 
 /*----- cached elements  -----*/
 const tableEl = document.getElementById("table"); 
@@ -31,9 +31,7 @@ const tileEls = document.querySelectorAll("#table > div");
 
 /*----- event listeners -----*/
 tableEl.addEventListener("click", handleClick);
-document.querySelector("button").addEventListener("click", function() {
-    console.log("clicked")
-})
+document.querySelector("button").addEventListener("click", initialize)
 
 /*----- functions -----*/
 initialize();
@@ -47,6 +45,8 @@ function initialize() {
 }
 
 function createPreShuffleArray() {
+    preShuffleChars = [];
+
     characters.forEach(function(character) {
       const charObj = {};
       charObj.tileValue = `${character.name}1`; //eg "simba1"
@@ -57,7 +57,7 @@ function createPreShuffleArray() {
       const charObj2 = {};
       charObj2.tileValue = `${character.name}2`; //eg "simba2"
       charObj2.name = character.name;
-      charObj.turn = 0;
+      charObj2.turn = 0;
       preShuffleChars.push(charObj2);
     });
 };
@@ -123,6 +123,7 @@ function render() {
 function renderTiles() {
     preShuffleChars.forEach(function(char, idx){
         const tileEl = document.getElementById(idx);
+        console.log(tileEl, idx);
     
         if (char.turn) { //if theres a turn
             tileEl.classList.remove("default", "breathe");
@@ -130,9 +131,10 @@ function renderTiles() {
         } else if (char.match) { //if theres a match
             tileEl.style.visibility = "hidden";
         } else if (!char.match) { //theres a turn and not a match
+            tileEl.style.visibility = "visible";
             tileEl.style.backgroundImage = null;
             tileEl.classList.add("default", "breathe");
-        } 
+        }
     });
 }
 
@@ -140,14 +142,15 @@ function renderMessage() {
     document.getElementById("match-counter").innerText = numMatches;
     const msg = document.getElementById("message");
     const winnerMsg = document.getElementById("winner-message");
-
-    if(turn === 1) {
-        msg.innerText = "Select first tile"
-    } else if(turn === -1) {
-        msg.innerText = "Select second tile";
-    } else if (numMatches === 12) {
-        winnerMsg.classList.remove("display-none");
+    
+    if (numMatches === 12) {
+        winnerMsg.classList.remove("hidden");  
+        winnerMsg.classList.add("breathe-win");
+    } else {
+        winnerMsg.classList.add("hidden"); //for restart
     }
+    
+    msg.innerText = (turn === 1) ? "Select first tile" : "Select second tile";        
 };
 
 function renderFindMeGrid() {
@@ -158,11 +161,9 @@ function renderFindMeGrid() {
     });
 
     preShuffleChars.forEach(function(char){
-        if(char.match) {
-            const matchCell = findMeCellEls.find(cell => cell.id === char.name);
-            console.log(matchCell);
-            matchCell.style.opacity = "0.15";
-        }
+        const matchCell = findMeCellEls.find(cell => cell.id === char.name);
+        
+        matchCell.style.opacity = char.match ? "0.15" : "1";
     });
 }
 

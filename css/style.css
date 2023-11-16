@@ -18,9 +18,19 @@ body {
     border: 3px solid rgb(64, 253, 255);
 }
 
+.breathe-win {
+    animation: breathe 0.7s infinite;
+}
+
 @keyframes breathe {
     0% {transform: scale(1);}
     50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}
+
+@keyframes breathe-win {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
     100% {transform: scale(1);}
 }
 
@@ -28,8 +38,8 @@ body {
     background-image: url("https://i.imgur.com/u4MdICK.jpg");
 }
 
-.display-none {
-    display: none;
+.hidden {
+    visibility: hidden;
 }
 
 .button-hover-style:hover {
@@ -61,7 +71,7 @@ h1 {
 
 /* Table and tileValue styling */
 #winner-message {
-    font-size: 80px;
+    font-size: 200px;
     color: rgb(64, 253, 255);
     position: absolute;
 }
