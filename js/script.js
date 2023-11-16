@@ -12,30 +12,23 @@ const characters = [
     {name: "woody", href: "https://i.imgur.com/3jYJhCy.jpg"}, //9
     {name: "buzz", href: "https://i.imgur.com/jCXG4AV.jpg"}, //10
     {name: "eve", href: "https://i.imgur.com/yUT2Pkd.jpg"}, //11
- ]
-
-
+ ];
 
 /*----- state variables -----*/
 let numMatches; //need 12 matches to win the game
-let matchStatus //1 = match, 2 = no match, 3 = default
-let turn //1 or -1 (1 is first selection, -1 is second selection)
+let matchStatus; //1 = match, 2 = no match, 3 = default
+let turn; //1 or -1 (1 is first selection, -1 is second selection)
 let tileDeck; //state arrray
 
 /*----- cached elements  -----*/
 const tableEl = document.getElementById("table"); 
 const tileEls = document.querySelectorAll("#table > div");
-const demoButtonEl = document.querySelector(".demo")
-
+const demoButtonEl = document.querySelector(".demo");
 
 /*----- event listeners -----*/
 tableEl.addEventListener("click", handleClick);
-document.querySelector(".restart").addEventListener("click", function() {
-    initialize(false);
-});
-
+document.querySelector(".restart").addEventListener("click", runRestartBtn);
 document.querySelector(".demo").addEventListener("click", runDemoBtn);
-
 
 /*----- functions -----*/
 initialize(false); //dont start in demo mode
@@ -52,11 +45,15 @@ function initialize(isDemo) {
     matchStatus = 3; //default
     demoButtonEl.classList.remove("demo-button-activate");
     render();
-}
+};
 
 function runDemoBtn() {
     initialize(true);
     demoButtonEl.classList.add("demo-button-activate");
+};
+
+function runRestartBtn() {
+    initialize(false);
 };
 
 function createPreShuffleArray() {
@@ -81,7 +78,7 @@ function shuffleTiles(array) {
     let currentArrayIndex = array.length; //the END element of the array
     let randomArrayIndex;
   
-    //only do this when there are elements to shuffle,
+    //only do this when there are elements to shuffle
     while (currentArrayIndex > 0) {
 
         //pick an element at random (i.e. randomIndex = random number between 0 - array unshuffled end)
@@ -97,9 +94,8 @@ function shuffleTiles(array) {
         array[randomArrayIndex] = savedPrevElement; 
     }
   
-    return array
+    return array;
 };
-
 
 function handleClick(evt) {
     const clickedTileElID = evt.target.getAttribute("id");
@@ -149,10 +145,10 @@ function checkForMatch() {
         matchStatus = 2; //no match
     }
 
-    nextGuess();
+    prepNextGuess();
 };
 
-function nextGuess() {
+function prepNextGuess() {
     tileDeck.forEach(char => char.turn = 0);
 };
 
@@ -160,7 +156,7 @@ function render() {
     renderTiles();
     renderMessage();
     renderFindMeGrid();
-}
+};
 
 //go through the characters, if "active" is true, then render the card
 function renderTiles() {
@@ -178,7 +174,7 @@ function renderTiles() {
             tileEl.classList.add("default", "breathe");
         }
     });
-}
+};
 
 function renderMessage() {
     document.getElementById("match-counter").innerText = numMatches;
@@ -191,7 +187,7 @@ function renderMessage() {
         winnerMsg.classList.add("breathe-win");
     } else {
         winnerMsg.classList.add("hidden"); //for restart
-    }
+    };
     
     msg.innerText = (turn === 1) ? "Select first tile" : "Select second tile"; 
     
@@ -207,7 +203,7 @@ function renderMessage() {
         matchStatusMsg.classList.add("nope");
     } else if (matchStatus === 3) { //default state
         matchStatusMsg.innerText = "";
-    }    
+    };    
 };
 
 function renderFindMeGrid() {
@@ -221,7 +217,7 @@ function renderFindMeGrid() {
         const matchCell = findMeCellEls.find(cell => cell.id === char.name);
         matchCell.style.opacity = char.match ? "0.15" : "1";
     });
-}
+};
 
 
 

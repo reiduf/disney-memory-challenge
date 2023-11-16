@@ -27,6 +27,22 @@ body {
     animation: nope 0.8s;
 }
 
+.default {
+    background-image: url("https://i.imgur.com/u4MdICK.jpg");
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.button-hover-style:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.demo-button-activate {
+    background-color: white;
+}
+
 @keyframes breathe {
     0% {transform: scale(1);}
     50% {transform: scale(1.1);}
@@ -60,22 +76,6 @@ body {
     100% {transform: translate3d(2px, 0, 0)}
 }
 
-.default {
-    background-image: url("https://i.imgur.com/u4MdICK.jpg");
-}
-
-.hidden {
-    visibility: hidden;
-}
-
-.button-hover-style:hover {
-    background-color: rgba(255, 255, 255, 0.85);
-}
-
-.demo-button-activate {
-    background-color: white;
-}
-
 /* Header Styling */
 header {
     width: 100vw;
@@ -99,7 +99,7 @@ h1 {
 }
 
 
-/* Table and tileValue styling */
+/* Table and tile styling */
 #winner-message {
     font-size: 200px;
     color: rgb(64, 253, 255);
@@ -127,7 +127,7 @@ h1 {
     background-size: cover;
 }
 
-/* Main / Message areas styling */
+/* Scoreboard & Fine Me styling */
 main {
     display: flex;
     justify-content: center;
