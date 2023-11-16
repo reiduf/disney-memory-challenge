@@ -25,23 +25,39 @@ let tileDeck; //state arrray
 /*----- cached elements  -----*/
 const tableEl = document.getElementById("table"); 
 const tileEls = document.querySelectorAll("#table > div");
+const demoButtonEl = document.querySelector(".demo")
 
 
 /*----- event listeners -----*/
 tableEl.addEventListener("click", handleClick);
-document.querySelector(".restart").addEventListener("click", initialize)
+document.querySelector(".restart").addEventListener("click", function() {
+    initialize(false);
+});
+
+document.querySelector(".demo").addEventListener("click", runDemoBtn);
+
 
 /*----- functions -----*/
-initialize();
+initialize(false); //dont start in demo mode
 
-function initialize() {
-    //shuffle the tileDeck array
+function initialize(isDemo) {
+    createPreShuffleArray();
+
+    if (!isDemo) {   
+        shuffleTiles(tileDeck);
+    }
+
     numMatches = 0;
     turn = 1;
     matchStatus = 3; //default
-    createPreShuffleArray();
+    demoButtonEl.classList.remove("demo-button-activate");
     render();
 }
+
+function runDemoBtn() {
+    initialize(true);
+    demoButtonEl.classList.add("demo-button-activate");
+};
 
 function createPreShuffleArray() {
     tileDeck = [];
