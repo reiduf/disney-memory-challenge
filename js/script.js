@@ -18,9 +18,8 @@ const characters = [
 
 /*----- state variables -----*/
 let shuffledChars; //array that stores the shuffled tile order
-let winner; //true or false
 let numMatches; //need 12 matches to win the game
-let matchStatus //true or false
+let matchStatus
 let turn //1 or -1 (1 is first selection, -1 is second selection)
 let preShuffleChars; //state arrray
 
@@ -91,6 +90,7 @@ function handleClick(evt) {
         setTimeout(function(){
             checkForMatch();
             render();
+            matchStatus = null;
         }, 900)
     }
 };
@@ -104,7 +104,10 @@ function checkForMatch() {
         numMatches += 1;
         firstTurn.match = true;
         secondTurn.match = true;
-    } 
+        matchStatus = true;
+    } else {
+        matchStatus = false;
+    }
 
     nextGuess();
 };
@@ -150,7 +153,9 @@ function renderMessage() {
         winnerMsg.classList.add("hidden"); //for restart
     }
     
-    msg.innerText = (turn === 1) ? "Select first tile" : "Select second tile";        
+    msg.innerText = (turn === 1) ? "Select first tile" : "Select second tile"; 
+    
+    
 };
 
 function renderFindMeGrid() {
