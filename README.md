@@ -1,7 +1,7 @@
 # Disney Memory Challenge
-A fun Disney twist on the classic Memory / Concentration game! Players click through the grid and attempt to find two matching tiles for each Disney Character. If the two selected tiles aren't a match, the tiles flip back over and the player must guess again. As matches are made, the number of matches count in the "Scoreboard" panel will update and the corresponding character thumbnail in the "Find Me!" panel fade out to indicate that character was found. To win the game, the player must match all 12 characters! 
+A fun Disney twist on the classic Memory / Concentration game! Players click through the grid and attempt to find two matching tiles for each Disney Character. If the two selected tiles aren't a match, the tiles flip back over and the player must guess again. As matches are made, the number of matches count in the "Scoreboard" panel will update and the corresponding character thumbnail in the "Find Me!" panel fades out to indicate that character was found. To win the game, the player must match all 12 characters! 
 
-## Snippets of gameplay
+## Snippets of Gameplay
 ![Game mid play](https://i.imgur.com/kscjLGt.png)
 ![More matches mid play](https://i.imgur.com/VjZnIa5.jpg)
 ![Game at winner state](https://i.imgur.com/6f1Amul.jpg)
