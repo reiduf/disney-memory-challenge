@@ -19,7 +19,7 @@ const characters = [
 /*----- state variables -----*/
 let shuffledChars; //array that stores the shuffled tile order
 let numMatches; //need 12 matches to win the game
-let matchStatus
+let matchStatus //1 = match, 2 = no match, 3 = default
 let turn //1 or -1 (1 is first selection, -1 is second selection)
 let preShuffleChars; //state arrray
 
@@ -39,6 +39,7 @@ function initialize() {
     //shuffle the preShuffleChars array
     numMatches = 0;
     turn = 1;
+    matchStatus = 3; //default
     createPreShuffleArray();
     render();
 }
@@ -90,7 +91,7 @@ function handleClick(evt) {
         setTimeout(function(){
             checkForMatch();
             render();
-            matchStatus = null;
+            matchStatus = 3; //default
         }, 900)
     }
 };
@@ -104,9 +105,9 @@ function checkForMatch() {
         numMatches += 1;
         firstTurn.match = true;
         secondTurn.match = true;
-        matchStatus = true;
+        matchStatus = 1; //match
     } else {
-        matchStatus = false;
+        matchStatus = 2; //no match
     }
 
     nextGuess();
@@ -126,7 +127,6 @@ function render() {
 function renderTiles() {
     preShuffleChars.forEach(function(char, idx){
         const tileEl = document.getElementById(idx);
-        console.log(tileEl, idx);
     
         if (char.turn) { //if theres a turn
             tileEl.classList.remove("default", "breathe");
@@ -145,6 +145,7 @@ function renderMessage() {
     document.getElementById("match-counter").innerText = numMatches;
     const msg = document.getElementById("message");
     const winnerMsg = document.getElementById("winner-message");
+    const matchStatusMsg = document.getElementById("match-status-msg");
     
     if (numMatches === 12) {
         winnerMsg.classList.remove("hidden");  
@@ -155,6 +156,17 @@ function renderMessage() {
     
     msg.innerText = (turn === 1) ? "Select first tile" : "Select second tile"; 
     
+    matchStatusMsg.classList.remove("shake", "nope"); //clear classes first
+
+    if (matchStatus === 1) { //match
+        matchStatusMsg.innerText = "It's a match!"
+        matchStatusMsg.classList.add("shake");
+    } else if (matchStatus === 2) { //no match
+        matchStatusMsg.innerText = "No match, try again"
+        matchStatusMsg.classList.add("nope");
+    } else if (matchStatus === 3) { //default state
+        matchStatusMsg.innerText = "";
+    }
     
 };
 
