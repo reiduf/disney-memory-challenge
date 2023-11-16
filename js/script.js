@@ -17,11 +17,10 @@ const characters = [
 
 
 /*----- state variables -----*/
-let shuffledChars; //array that stores the shuffled tile order
 let numMatches; //need 12 matches to win the game
 let matchStatus //1 = match, 2 = no match, 3 = default
 let turn //1 or -1 (1 is first selection, -1 is second selection)
-let preShuffleChars; //state arrray
+let tileDeck; //state arrray
 
 /*----- cached elements  -----*/
 const tableEl = document.getElementById("table"); 
@@ -36,7 +35,7 @@ document.querySelector(".restart").addEventListener("click", initialize)
 initialize();
 
 function initialize() {
-    //shuffle the preShuffleChars array
+    //shuffle the tileDeck array
     numMatches = 0;
     turn = 1;
     matchStatus = 3; //default
@@ -45,26 +44,50 @@ function initialize() {
 }
 
 function createPreShuffleArray() {
-    preShuffleChars = [];
+    tileDeck = [];
 
     characters.forEach(function(character) {
       const charObj = {};
       charObj.tileValue = `${character.name}1`; //eg "simba1"
       charObj.name = character.name;
       charObj.turn = 0;
-      preShuffleChars.push(charObj);
+      tileDeck.push(charObj);
 
       const charObj2 = {};
       charObj2.tileValue = `${character.name}2`; //eg "simba2"
       charObj2.name = character.name;
       charObj2.turn = 0;
-      preShuffleChars.push(charObj2);
+      tileDeck.push(charObj2);
     });
 };
 
+function shuffleTiles(array) {
+    let currentArrayIndex = array.length; //the END element of the array
+    let randomArrayIndex;
+  
+    //only do this when there are elements to shuffle,
+    while (currentArrayIndex > 0) {
+
+        //pick an element at random (i.e. randomIndex = random number between 0 - array unshuffled end)
+        randomArrayIndex = Math.floor(Math.random() * currentArrayIndex); 
+        currentArrayIndex--; //set up guard for shuffle area  
+        
+        //save the item to be overwritten
+        const savedPrevElement = array[currentArrayIndex]
+
+        //replace the current index with random index,
+        //put the overwritten index back in
+        array[currentArrayIndex] = array[randomArrayIndex];
+        array[randomArrayIndex] = savedPrevElement; 
+    }
+  
+    return array
+};
+
+
 function handleClick(evt) {
     const clickedTileElID = evt.target.getAttribute("id");
-    const activeCharObj = preShuffleChars[clickedTileElID]; //update to shuffled deck later
+    const activeCharObj = tileDeck[clickedTileElID]; //update to shuffled deck later
     
     //GUARD - only click the tiles
     if (evt.target.tagName !== "DIV") {
@@ -77,7 +100,7 @@ function handleClick(evt) {
     }
 
     //GUARD - once second selection made, stop
-    if (preShuffleChars.some(char => char.turn === -1)) {
+    if (tileDeck.some(char => char.turn === -1)) {
         return;
     }
 
@@ -87,7 +110,7 @@ function handleClick(evt) {
     render();
 
     //check the state array, if the second selection was assigned, then check for a match
-    if (preShuffleChars.some(char => char.turn === -1)) {
+    if (tileDeck.some(char => char.turn === -1)) {
         setTimeout(function(){
             checkForMatch();
             render();
@@ -97,8 +120,8 @@ function handleClick(evt) {
 };
 
 function checkForMatch() {
-    const firstTurn = preShuffleChars.find(char => char.turn === 1);
-    const secondTurn = preShuffleChars.find(char => char.turn === -1);
+    const firstTurn = tileDeck.find(char => char.turn === 1);
+    const secondTurn = tileDeck.find(char => char.turn === -1);
 
     //compare if the name property of those two match
     if (firstTurn.name === secondTurn.name) {
@@ -114,7 +137,7 @@ function checkForMatch() {
 };
 
 function nextGuess() {
-    preShuffleChars.forEach(char => char.turn = 0);
+    tileDeck.forEach(char => char.turn = 0);
 };
 
 function render() {
@@ -125,7 +148,7 @@ function render() {
 
 //go through the characters, if "active" is true, then render the card
 function renderTiles() {
-    preShuffleChars.forEach(function(char, idx){
+    tileDeck.forEach(function(char, idx){
         const tileEl = document.getElementById(idx);
     
         if (char.turn) { //if theres a turn
@@ -178,7 +201,7 @@ function renderFindMeGrid() {
         cell.style.backgroundImage = `url("${characters[idx].href}")`
     });
 
-    preShuffleChars.forEach(function(char){
+    tileDeck.forEach(function(char){
         const matchCell = findMeCellEls.find(cell => cell.id === char.name);
         matchCell.style.opacity = char.match ? "0.15" : "1";
     });
