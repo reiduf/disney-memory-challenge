@@ -158,7 +158,9 @@ function renderMessage() {
     
     matchStatusMsg.classList.remove("shake", "nope"); //clear classes first
 
-    if (matchStatus === 1) { //match
+    if (matchStatus === 1 && numMatches === 12) { //match and winner
+        return;
+    } else if (matchStatus === 1) { //its a match
         matchStatusMsg.innerText = "It's a match!"
         matchStatusMsg.classList.add("shake");
     } else if (matchStatus === 2) { //no match
@@ -166,8 +168,7 @@ function renderMessage() {
         matchStatusMsg.classList.add("nope");
     } else if (matchStatus === 3) { //default state
         matchStatusMsg.innerText = "";
-    }
-    
+    }    
 };
 
 function renderFindMeGrid() {
