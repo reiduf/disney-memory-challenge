@@ -14,7 +14,7 @@ A fun Disney twist on the classic Memory / Concentration game! Players click thr
 5. JavaScript: adds match/win logic, the ability to shuffle tiles around with each game, and styling based on game state 
 
 ## Getting Started
-[Play Disney Memory Challenge](https://reiduf.github.io/project-1-memory/)
+[Play Disney Memory Challenge](https://reiduf.github.io/disney-memory-challenge/)
 
 Please enjoy the game!
 
